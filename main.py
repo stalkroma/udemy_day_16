@@ -23,9 +23,15 @@ while machine_on:
     elif drink == 'report':
         coffee_name.report()
         money.report()
-
-    elif drink == "latte":
-        print(coffee_name.is_resource_sufficient(menu_drink.find_drink(drink)))
-
     else:
-        print(f"We doesn't have {drink}. You can order only espresso or latte or cappuccino")
+            if any(item.name == drink for item in menu_drink.menu):
+                print("git")
+                if_sufficient = coffee_name.is_resource_sufficient(menu_drink.find_drink(drink))
+                print(if_sufficient)
+            else:
+                print("nie ma takiego napoju")
+
+
+
+
+    #    print(f"We doesn't have {drink}. You can order only espresso or latte or cappuccino")
