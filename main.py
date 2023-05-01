@@ -15,7 +15,7 @@ continue to make the drink but print: “Sorry there is not enough water.”
 c. The same should happen if another resource is depleted, e.g. milk or coffee.
 """
 while machine_on:
-    drink = input('What would you like? (espresso/latte/cappuccino/):').lower()
+    drink = input('What wo  uld you like? (espresso/latte/cappuccino/):').lower()
     if drink == 'off':
         print("Machine off have a nice day")
         machine_on = False
@@ -26,8 +26,9 @@ while machine_on:
     else:
             if any(item.name == drink for item in menu_drink.menu):
                 print("git")
-                if_sufficient = coffee_name.is_resource_sufficient(menu_drink.find_drink(drink))
-                print(if_sufficient)
+                if coffee_name.is_resource_sufficient(menu_drink.find_drink(drink)) == False:
+                    continue
+                coffee_name.make_coffee(menu_drink.find_drink(drink))
             else:
                 print("nie ma takiego napoju")
 
