@@ -1,16 +1,31 @@
-# This is a sample Python script.
+from menu import Menu, MenuItem
+from coffee_maker import CoffeeMaker
+from money_machine import MoneyMachine
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+coffee_name = CoffeeMaker()
+money = MoneyMachine()
+menu_drink = Menu()
+machine_on = True
 
+""" TODO 4. Check resources sufficient?
+a. When the user chooses a drink, the program should check if there are enough resources
+to make that drink.
+b. E.g. if Latte requires 200ml water but there is only 100ml left in the machine. It should not
+continue to make the drink but print: “Sorry there is not enough water.”
+c. The same should happen if another resource is depleted, e.g. milk or coffee.
+"""
+while machine_on:
+    drink = input('What would you like? (espresso/latte/cappuccino/):').lower()
+    if drink == 'off':
+        print("Machine off have a nice day")
+        machine_on = False
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+    elif drink == 'report':
+        coffee_name.report()
+        money.report()
 
+    elif drink == "latte":
+        print(coffee_name.is_resource_sufficient(menu_drink.find_drink(drink)))
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    else:
+        print(f"We doesn't have {drink}. You can order only espresso or latte or cappuccino")
